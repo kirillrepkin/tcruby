@@ -12,5 +12,14 @@ services:
     volumes:
       - db:/data/postgres
     restart: unless-stopped
+  app:
+    container_name: app
+    image: money_transfer_app:latest
+    links:
+      - db
+    environment:
+      DB_URL: "postgres://postgres:${POSTGRES_PASSWORD}@db/postgres"
+    ports:
+      - "8080:8080"
 volumes:
   db:
