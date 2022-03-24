@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  db:
+    container_name: pgdb
+    image: postgres:12.0
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PG_DATA: /data/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/data/postgres
+    restart: unless-stopped
+volumes:
+  db:
