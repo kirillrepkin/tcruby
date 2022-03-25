@@ -34,7 +34,7 @@ end
 
 puts 'Creating transactions...'
 transactions.each do |id, status, sum, currency, account_id|
-  Entity::Transaction.create(id: id, status: status, sum: sum, account_id: account_id)
+  Entity::Transaction.create(id: id, status: status, sum: sum, currency: currency, account_id: account_id)
 end
 
 puts 'Done.'
