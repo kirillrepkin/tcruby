@@ -3,6 +3,12 @@ require './db/db_conn'
 
 namespace :db do
 
+  desc "Apply fixtures on the database"
+  task :seeds do
+    ActiveRecord::Base.establish_connection(db_config)
+    require './db/seeds'
+  end
+
   desc "Apply the database migration scripts"
   task :migrate do
     ActiveRecord::Base.establish_connection(db_config)
