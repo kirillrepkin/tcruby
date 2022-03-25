@@ -10,6 +10,10 @@ module Service
 
   class MoneyTransferService
 
+    def find_user(user_identity)
+      Entity::User.find_by(username: user_identity)
+    end
+
   end
 
 end
