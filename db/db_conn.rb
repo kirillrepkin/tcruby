@@ -9,3 +9,4 @@ def db_config
     :schema => 'public'
   }
 end
+
