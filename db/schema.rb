@@ -25,6 +25,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_25_144620) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
+  create_table "requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "sender_id"
+    t.uuid "recipient_id"
+    t.float "sum"
+    t.string "currency"
+    t.index ["recipient_id"], name: "index_requests_on_recipient_id"
+    t.index ["sender_id"], name: "index_requests_on_sender_id"
+  end
+
   create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", null: false
@@ -44,5 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_25_144620) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "requests", "users", column: "recipient_id"
+  add_foreign_key "requests", "users", column: "sender_id"
   add_foreign_key "transactions", "accounts"
 end

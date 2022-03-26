@@ -4,6 +4,11 @@ class Entities < ActiveRecord::Migration[7.0]
 
     enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
 
+    create_table :requests, id: :uuid, default: 'gen_random_uuid()' do |t|
+      t.string :status
+      t.timestamps
+    end
+
     create_table :transactions, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.string :status
       t.timestamps
