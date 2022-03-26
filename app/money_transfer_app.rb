@@ -9,6 +9,7 @@ svc = Service::MoneyTransferService.new()
 
 namespace '/api/v1' do
 
+  # 1.	Получение текущего баланса пользователя
   get '/user/:user_id/balance' do |user_id|
     user = svc.find_user(user_id)
     if user.nil?
@@ -22,5 +23,7 @@ namespace '/api/v1' do
       json result
     end
   end
+
+
 
 end

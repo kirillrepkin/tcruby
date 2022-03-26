@@ -9,6 +9,7 @@ class MoneyTransferAppTest <Test::Unit::TestCase
     Sinatra::Application
   end
 
+  # 1.	Получение текущего баланса пользователя
   def test_get_user_balance_n1
     username = "ivan01.ivanov"
     get '/api/v1/user/' + username + '/balance'
@@ -18,6 +19,7 @@ class MoneyTransferAppTest <Test::Unit::TestCase
     assert json['balance'] > 0
   end
 
+  # 1.	Получение текущего баланса пользователя
   def test_get_user_balance_n2
     username = 'some_user_here'
     get '/api/v1/user/' + username + '/balance'

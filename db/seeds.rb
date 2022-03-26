@@ -13,8 +13,8 @@ accounts = [
 ]
 
 transactions = [
-  ["4fe32790-ad0b-11ec-b909-0242ac120002", 'ok', 10500, 'EUR', "4fe32114-ad0b-11ec-b909-0242ac120002"],
-  ["4fe32952-ad0b-11ec-b909-0242ac120002", 'ok', 10500, 'EUR', "4fe3259c-ad0b-11ec-b909-0242ac120002"]
+  ["4fe32790-ad0b-11ec-b909-0242ac120002", :completed, 10500, 'EUR', "4fe32114-ad0b-11ec-b909-0242ac120002"],
+  ["4fe32952-ad0b-11ec-b909-0242ac120002", :completed, 10500, 'EUR', "4fe3259c-ad0b-11ec-b909-0242ac120002"]
 ]
 
 puts 'Clean up...'
