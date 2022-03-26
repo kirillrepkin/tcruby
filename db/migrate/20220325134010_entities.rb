@@ -6,6 +6,7 @@ class Entities < ActiveRecord::Migration[7.0]
 
     create_table :requests, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.string :status
+      t.string :keyword
       t.timestamps
     end
 
