@@ -3,18 +3,18 @@ require './app/model/account'
 require './app/model/transaction'
 
 users = [
-  [1, "ivan01.ivanov", "Ivan", "Ivanov"],
-  [2, "petrX1.petrov", "Petr", "Petrov"]
+  ["4fe31bba-ad0b-11ec-b909-0242ac120002", "ivan01.ivanov", "Ivan", "Ivanov"],
+  ["4fe31f48-ad0b-11ec-b909-0242ac120002", "petrX1.petrov", "Petr", "Petrov"]
 ]
 
 accounts = [
-  [1, "NL07INGB5373380466", 1, 10500, 'EUR'],
-  [2, "PL02109024026216714137852653", 2, 10500, 'EUR']
+  ["4fe32114-ad0b-11ec-b909-0242ac120002", "NL07INGB5373380466", "4fe31bba-ad0b-11ec-b909-0242ac120002", 10500, 'EUR'],
+  ["4fe3259c-ad0b-11ec-b909-0242ac120002", "PL02109024026216714137852653", "4fe31f48-ad0b-11ec-b909-0242ac120002", 10500, 'EUR']
 ]
 
 transactions = [
-  [1, 'ok', 10500, 'EUR', 1],
-  [2, 'ok', 10500, 'EUR', 2]
+  ["4fe32790-ad0b-11ec-b909-0242ac120002", 'ok', 10500, 'EUR', "4fe32114-ad0b-11ec-b909-0242ac120002"],
+  ["4fe32952-ad0b-11ec-b909-0242ac120002", 'ok', 10500, 'EUR', "4fe3259c-ad0b-11ec-b909-0242ac120002"]
 ]
 
 puts 'Clean up...'
