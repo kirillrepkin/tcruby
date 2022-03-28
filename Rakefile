@@ -13,7 +13,7 @@ namespace :db do
   desc "Apply the database migration scripts"
   task :migrate do
     ActiveRecord::Base.establish_connection(db_config)
-    ActiveRecord::MigrationContext.new("db/migrate/").migrate()
+    ActiveRecord::MigrationContext.new("db/migrate/").migrate
   end
 
   desc "Create the database"
