@@ -41,4 +41,12 @@ class MoneyTransferAppTest_Transfer <Test::Unit::TestCase
     assert json['message'].include? "Currency 'USD'"
   end
 
+  def test_money_transfer_not_enough
+    put '/api/v1/transfer/' + SENDER[0] + '/' + RECIPIENT[0], params = {:sum => SUM*1000, :currency => CURRENCY}
+    assert last_response.status == 500
+    json = JSON.parse(last_response.body)
+    assert json['class'] == 'Exception'
+    assert json['message'].include? "Not enough funds"
+  end
+
 end

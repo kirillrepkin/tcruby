@@ -53,6 +53,7 @@ module Entity
         update_transactions :created
         sender.account.lock!
         recipient.account.lock!
+        raise Exception.new("Not enough funds in the account of sender") if sender.account.sum < self.sum
         sender.account.sum -= self.sum
         sender.account.save!
         recipient.account.sum += self.sum
