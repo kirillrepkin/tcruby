@@ -71,6 +71,6 @@ end
 namespace :test do
   desc "Run unit tests"
   task :unit do
-    FileList['test/*_test_*.rb'].each { |file| system ("ruby " + file) }
+    FileList['test/*.rb'].each { |file| system ("ruby " + file) }
   end
 end
