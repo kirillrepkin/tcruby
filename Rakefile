@@ -1,5 +1,6 @@
 require 'active_record'
 require './db/db_conn'
+require 'rake/testtask'
 
 namespace :db do
 
@@ -64,5 +65,12 @@ EOF
     end
     puts "Migration #{path} created"
     abort
+  end
+end
+
+namespace :test do
+  desc "Run unit tests"
+  task :unit do
+    FileList['test/*_test_*.rb'].each { |file| system ("ruby " + file) }
   end
 end
