@@ -4,7 +4,7 @@ module Entity
   class Transaction < ActiveRecord::Base
 
     belongs_to :account
-    enum status: [:created, :failed, :completed]
+    enum :status, {:created => 'created', :failed => 'failed', :completed => 'completed'}, default: :created
 
     def self.transactions_for(sender, recipient, sum, currency)
       snd_tran = Entity::Transaction.create(

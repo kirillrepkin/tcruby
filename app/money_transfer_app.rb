@@ -91,4 +91,8 @@ namespace '/api/v1' do
     value
   end
 
+  get '/requests' do
+    json Entity::Request.all
+  end
+
 end

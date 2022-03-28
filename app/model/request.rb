@@ -3,11 +3,12 @@ require 'active_record'
 module Entity
   class Request < ActiveRecord::Base
 
-    enum status: [:created, :declined, :completed]
+    enum :status, {:created => 'created', :declined => 'declined', :completed => 'completed'}, default: :created
 
     attribute :sender_id
     attribute :recipient_id
     attribute :keyword
+    attribute :status
 
     def transactions
       @transactions = Entity::Transaction.transactions_for self.sender, self.recipient, self.sum, self.currency if @transactions.nil?

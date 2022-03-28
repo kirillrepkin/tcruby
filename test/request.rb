@@ -43,6 +43,20 @@ class MoneyTransferAppTest_Transfer <Test::Unit::TestCase
     assert json['id'] == request_id
   end
 
+  def not_acceptable_state_of_request(request_id, keyword)
+    post '/api/v1/request/' + request_id, params = {:keyword => keyword}
+    assert last_response.status == 404
+    json = JSON.parse(last_response.body)
+    assert json['class'] == 'ArgumentError'
+  end
+
+  def not_declinable_state_of_request(request_id, keyword)
+    post '/api/v1/request/' + request_id, params = {:keyword => keyword}
+    assert last_response.status == 404
+    json = JSON.parse(last_response.body)
+    assert json['class'] == 'ArgumentError'
+  end
+
   def accept_request_wrong_keyword(request_id, keyword)
     post '/api/v1/request/' + request_id, params = {:keyword => keyword}
     assert last_response.status == 404
@@ -76,6 +90,7 @@ class MoneyTransferAppTest_Transfer <Test::Unit::TestCase
     recipient_balance_after = get_user_balance RECIPIENT[0]
     assert sender_balance_after + SUM == sender_balance_before
     assert recipient_balance_after - SUM == recipient_balance_before
+    not_acceptable_state_of_request request_id, KEYWORD
   end
 
   def test_create_request_and_decline
@@ -88,6 +103,7 @@ class MoneyTransferAppTest_Transfer <Test::Unit::TestCase
     recipient_balance_after = get_user_balance RECIPIENT[0]
     assert sender_balance_after == sender_balance_before
     assert recipient_balance_after == recipient_balance_before
+    not_declinable_state_of_request request_id, KEYWORD
   end
 
 end

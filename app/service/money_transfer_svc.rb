@@ -35,12 +35,14 @@ module Service
 
     def accept_request(request_id, keyword)
       request = find_request(request_id)
+      raise ArgumentError.new("Can't accept this request") unless request.status == 'created'
       raise ArgumentError.new("Wrong keyword") unless request.key? keyword
       request.accept
     end
 
     def decline_request(request_id, keyword)
       request = find_request(request_id)
+      raise ArgumentError.new("Can't decline this request") unless request.status == 'created'
       raise ArgumentError.new("Wrong keyword") unless request.key? keyword
       request.decline
     end
