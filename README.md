@@ -46,3 +46,9 @@ curl -X GET http://localhost:8080/api/v1/user/ivan01.ivanov/balance | jq
   "currency": "EUR"
 }
 ```
+
+## Unit tests
+
+```sh
+rake test:unit
+```
