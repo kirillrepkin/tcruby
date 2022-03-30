@@ -1,22 +1,26 @@
+## Переменные окружения
 
-## Run
-
-Сборка образа установшика (инициализация БД)
+Создание файла с переменными окружениями
 
 ```sh
-docker build . -f Install.dockerfile -t money_transfer_app_install
+cp development.env.sample development.env
 ```
+
+Модифицировать значения в файле development.env - убрать # и задать значения пароля для postgres 
+
+
+## Run
 
 Сборка образа приложения
 
 ```sh
-docker build . -f Application.dockerfile -t money_transfer_app
+docker build . -t money_transfer_app
 ```
 
 Запуск установщика
 
 ```sh
-docker-compose up -d install
+docker-compose up -d installer
 ```
 
 Просмотр логов установщика. Не должно быть ошибок
@@ -50,5 +54,6 @@ curl -X GET http://localhost:8080/api/v1/user/ivan01.ivanov/balance | jq
 ## Unit tests
 
 ```sh
-rake test:unit
+export $(cat development.env | xargs)
+export POSTGRES_HOST=localhost && rake test:unit
 ```

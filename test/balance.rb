@@ -13,7 +13,6 @@ class MoneyTransferAppTest_Balance <Test::Unit::TestCase
 
   # 1.	Получение текущего баланса пользователя
   def test_get_user_balance_n1
-    username = "ivan01.ivanov"
     get '/api/v1/user/' + USER[0] + '/balance'
     assert last_response.ok?
     json = JSON.parse(last_response.body)

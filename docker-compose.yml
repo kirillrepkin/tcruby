@@ -21,12 +21,14 @@ services:
       - development.env
     ports:
       - "8080:8080"
+    command: "bundle exec rackup --host 0.0.0.0 -p 8080"
   installer:
     container_name: app_install
-    image: money_transfer_app_install:latest
+    image: money_transfer_app:latest
     links:
       - db
     env_file:
       - development.env
+    command: "rake db:migrate db:seeds"
 volumes:
   db:
