@@ -2,7 +2,7 @@ require './app/money_transfer_app'
 require 'test/unit'
 require 'rack/test'
 
-class MoneyTransferAppTest_Transfer <Test::Unit::TestCase
+class MoneyTransferAppTest_Request <Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
